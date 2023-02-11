@@ -7,8 +7,6 @@ lsp.ensure_installed({
     "eslint",
     "sumneko_lua",
     "rust_analyzer",
-    "tailwindcss",
-    "pyright"
 })
 
 -- Fix Undefined global 'vim'

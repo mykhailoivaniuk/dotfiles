@@ -46,5 +46,5 @@ use {
 }
 
 use("Pocco81/auto-save.nvim")
-
+use("jose-elias-alvarez/null-ls.nvim")
 end)
