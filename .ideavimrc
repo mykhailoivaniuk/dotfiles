@@ -1,0 +1,35 @@
+set hlsearch
+set scrolloff=3
+set ignorecase smartcase
+set showmode
+set history=1000
+
+" easy system clipboard copy/paste
+noremap <space>y "*y
+noremap <space>Y "*Y
+noremap <space>p "*p
+noremap <space>P "*P
+
+" clear the search buffer when hitting return
+nnoremap <space><cr> :nohlsearch<cr>
+
+" remap esc
+nnoremap hj <esc>
+inoremap hj <esc>
+vnoremap hj <esc>
+
+" code Navigation
+nnoremap gd :action GoToDeclaration<cr>
+nnoremap <space>k :action HighlightUsagesInFile<cr>
+nnoremap <space>ps :action FindInPath<cr> " this is grep over text in all files
+nnoremap <space>fr :action FindUsages<cr>
+nnoremap <space>lf :Action ReformatCode<cr>
+" code refactoring
+nnoremap <space>s :action RenameElement<cr>
+
+" file navigation
+
+" complete
+inoremap <Tab> <C-y>
+nnoremap <Tab> <C-y>
+vnoremap <Tab> <C-y>
