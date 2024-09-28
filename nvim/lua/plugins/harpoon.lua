@@ -13,11 +13,18 @@ return {
 		init = function()
 			local mark = require("harpoon.mark")
 			local ui = require("harpoon.ui")
+            -- Add file to be tracked by harpoon
 			vim.keymap.set("n", "<leader>a", mark.add_file)
+
+            -- Show all files currently tracked by harpoon
 			vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+
+            -- Goto next file tracked by harpoon
 			vim.keymap.set("n", "<C-h>", function()
 				ui.nav_next()
 			end)
+
+            -- Go to prev file tracked by harpoon
 			vim.keymap.set("n", "<C-t>", function()
 				ui.nav_prev()
 			end)
