@@ -4,7 +4,8 @@
 3. Install ripgrep 
 4. Install fzf
 5. Download nvim.tar.gz and place it under ~/.config/nvim
-6. Launch nvim and run `Lazy sync`  followed by `Lazy restore`
+6. Launch nvim and run `Lazy sync`
+7. Install required formatters using `Mason` -> required formatters and linters are specifed in `plugins/formatting.lua` and `plugins/linting.lua`
 
 
 ## Plugins and Keybindings
