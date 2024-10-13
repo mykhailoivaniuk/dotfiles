@@ -7,9 +7,11 @@ set scrolloff=3
 set ignorecase smartcase
 set showmode
 set history=1000
-set textwidth=80 
+set textwidth=80
 set wrap=true
 
+" set leader
+let mapleader = " "
 " easy system clipboard copy/paste
 noremap <space>y "*y
 noremap <space>Y "*Y
@@ -20,32 +22,47 @@ noremap <space>P "*P
 nnoremap <space><cr> :nohlsearch<cr>
 
 " remap esc
-nnoremap jk <esc>
-inoremap jk <esc>
-vnoremap jk <esc>
-
-" code Navigation
-nnoremap gd :action GoToDeclaration<cr>
-nnoremap <space>k :action HighlightUsagesInFile<cr>
-nnoremap <space>ps :action FindInPath<cr> " this is grep over text in all files
-nnoremap <space>fr :action FindUsages<cr>
-nnoremap <space>lf :Action ReformatCode<cr>
+nnoremap hj <esc>
+inoremap hj <esc>
+vnoremap hj <esc>
 
 " code refactoring
 nnoremap <space>s :action RenameElement<cr>
 
-" Move Selected Lines Up and Down
-vnoremap <C-K> :action MoveLineUp<cr>
-vnoremap <C-J> :action MoveLineDown<cr>
+" Move Selected Block Up and Down
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " Surround
 vnoremap <space>cs :action SurroundWith<cr>
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
 
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
+" find
+nnoremap <leader>pf :action GotoFile<CR>
+nnoremap <leader>ps :action GotoSymbol<CR>
 
-"" toggle the breakpoint on the current line
-nnoremap <space>b :action ToggleLineBreakpoint<cr>
+" use ctrl+h/j/k/l switch window
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+
+" code navigation
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gy :action GotoTypeDeclaration<CR>
+nnoremap gr :action ShowUsages<CR>
+nnoremap gd :action GotoDeclaration<CR>
+
+" code information
+nnoremap K :action ShowHoverInfo<CR>
+
+" Terminal shortcuts
+nnoremap <C-t> :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+
+" zen-mode
+nnoremap <C-z> :action ToggleDistractionFreeMode<CR>
+
+" reformat code
+nnoremap <Leader>lf :action ReformatCode<CR>
+vnoremap <Leader>lf :action ReformatCode<CR>
