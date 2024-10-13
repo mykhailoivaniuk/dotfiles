@@ -66,3 +66,14 @@ nnoremap <C-z> :action ToggleDistractionFreeMode<CR>
 " reformat code
 nnoremap <Leader>lf :action ReformatCode<CR>
 vnoremap <Leader>lf :action ReformatCode<CR>
+
+" Git
+
+" In settings look for annotate and set it to Alt-G for Git
+" then right click on the gutter and choose View -> Revision
+
+" See File History
+nnoremap gb :action Vcs.Log.ToolWindow.TabActions.DropDown<cr>
+
+" open file on github
+nnoremap gB :action Vcs.FileHistory.Toolbar<CR>
