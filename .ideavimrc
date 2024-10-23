@@ -77,3 +77,6 @@ nnoremap gb :action Vcs.Log.ToolWindow.TabActions.DropDown<cr>
 
 " open file on github
 nnoremap gB :action Vcs.FileHistory.Toolbar<CR>
+
+" Choose a completion option from the list
+inoremap <C-y> :action EditorChooseLookupItem<cr>
