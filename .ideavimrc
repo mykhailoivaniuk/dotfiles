@@ -7,8 +7,7 @@ set scrolloff=3
 set ignorecase smartcase
 set showmode
 set history=1000
-set textwidth=80
-set wrap=true
+set textwidth=120
 
 " set leader
 let mapleader = " "
@@ -80,3 +79,8 @@ nnoremap gB :action Vcs.FileHistory.Toolbar<CR>
 
 " Choose a completion option from the list
 inoremap <C-y> :action EditorChooseLookupItem<cr>
+
+Plug 'preservim/nerdtree'
+
+" Open File Tree
+nnoremap <leader>pv :NERDTreeToggle<CR>
