@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Get a directory with fzf
+selected=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d | fzf)
+if [[ -z "$selected" ]]; then 
+    exit 0
+fi
+
+# tr replaces characrters since tmux doesn't allow them in session names
+selected_name=$(basename $selected | tr ".,: " "____")
+
+#echo "selected!! $selected -- selected_name $selected_name"
+
+
+switch_to() {
+    if [[ -z "$TMUX" ]]; then
+        tmux attach-session -t $selected_name
+    else 
+        tmux switch-client -t $selected_name
+    fi
+}
+if tmux has-session -t=$selected_name 2> /dev/null; then 
+    switch_to
+else
+    tmux new-session -ds $selected_name -c $selected
+    switch_to
+fi
+
+# if we want to do something with the new session like create a new window
+#tmux send-keys -t $selected_name "ready-tmux" ^M
