@@ -18,3 +18,6 @@ Most important plugins are:
 - `telescope.lua` -> fuzzy finder for files and strings
 - `treesitter.lua` -> fast language parser
 - `harpoon.lua` -> fast file switching
+
+## Notes
+- Quickfix lists in vim are very nice. You can search for things in telescope, press Ctrl-q and add all the items to the quickfix list. You can then go through it with Ctrl-k/j
