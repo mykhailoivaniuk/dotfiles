@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script copies a message with PR link title and stats for quick sharing
+gh pr view --json title --json url --json additions --json deletions | jq -r '"\(.title) (+\(.additions) -\(.deletions)) \(.url)"' | pbcopy
