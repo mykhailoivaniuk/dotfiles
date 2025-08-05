@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Which string we want to find
+FIND=${1:-}
+# The string we'll use to replace the one we want to find
+REPLACE_WITH=${2:-}
+# Specifies a location where we want to perform find and replace
+WHERE=${3:-}
+if [[ -z $FIND ]]; then
+    echo "Usage: <string_to_find> <string_to_replace> <location: dir or file>"
+    exit 1
+fi
+if [[ -z $REPLACE_WITH ]]; then
+    echo "Usage: <string_to_find> <string_to_replace> <location: dir or file>"
+    exit 1
+fi
+if [[ -z $WHERE ]]; then
+    echo "Usage: <string_to_find> <string_to_replace> <location: dir or file>"
+    exit 1
+fi
+rg -l "$FIND" "$WHERE" | xargs sd "$FIND" "$REPLACE_WITH"
