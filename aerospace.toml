@@ -12,7 +12,7 @@ after-login-command = []
 after-startup-command = [
     # JankyBorders has a built-in detection of already running process,
     # so it won't be run twice on AeroSpace restart
-    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
+    #'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
 ]
 
 # Start AeroSpace at login
@@ -152,10 +152,10 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-semicolon = 'mode service'
 
     # App Launching shortcuts
-    alt-b = 'exec-and-forget open -a "/Applications/Brave Browser.app"'
-    alt-t = "exec-and-forget open -a /Applications/Telegram.app"
+    alt-b = 'exec-and-forget open -a "/Applications/Island.app"'
+    alt-t = "exec-and-forget open -a /Applications/Slack.app"
     alt-g = "exec-and-forget open -a /Applications/Ghostty.app"
-    alt-i = 'exec-and-forget open -na "/Users/misha/Applications/IntelliJ IDEA Community Edition.app/Contents/MacOS/idea"'
+    alt-i = 'exec-and-forget open -na "/Users/mivaniuk/Applications/IntelliJ IDEA Ultimate.app/Contents/MacOS/idea"'
 
     # Maximize/Minimize current window
     alt-f = 'fullscreen'
@@ -184,7 +184,44 @@ automatically-unhide-macos-hidden-apps = false
 if.app-name-regex-substring = 'finder'
 run = 'layout floating'
 
+
 [[on-window-detected]]
-if.app-name-regex-substring = 'telegram'
+if.app-name-regex-substring = 'outlook'
 run = 'layout floating'
 
+
+
+[[on-window-detected]]
+    if.app-name-regex-substring = 'IDEA'
+    run = ['move-node-to-workspace 1']  
+
+[[on-window-detected]]
+    if.app-name-regex-substring = 'Ghostty'
+    run = ['move-node-to-workspace 2']  
+
+[[on-window-detected]]
+    if.app-name-regex-substring = 'island'
+    run = ['move-node-to-workspace 3']  
+
+[[on-window-detected]]
+    if.app-name-regex-substring = 'slack'
+    run = ['move-node-to-workspace 4']  
+
+[[on-window-detected]]
+    if.app-name-regex-substring = 'things'
+    run = ['move-node-to-workspace 5']  
+[[on-window-detected]]
+    if.app-name-regex-substring = 'teams'
+    run = ['move-node-to-workspace 6']  
+
+[workspace-to-monitor-force-assignment]
+1 = ['secondary', 'main']
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+
+6 = ['secondary', 'main']
+7 = ['secondary', 'main']
+8 = ['secondary', 'main']
+9 = ['secondary', 'main']
