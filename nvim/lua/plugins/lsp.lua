@@ -43,20 +43,6 @@ return {
 					})
 				end,
 
-				zls = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.zls.setup({
-						root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-						settings = {
-							zls = {
-								enable_inlay_hints = true,
-								enable_snippets = true,
-								warn_style = true,
-							},
-						},
-					})
-					vim.g.zig_fmt_parse_errors = 0
-					vim.g.zig_fmt_autosave = 0
 				end,
 				["lua_ls"] = function()
 					local lspconfig = require("lspconfig")
@@ -74,6 +60,31 @@ return {
 				end,
 			},
 		})
+
+		-- Setup ZLS (outside Mason) -- for version compatability with zig
+        local lspconfig = require("lspconfig")
+        lspconfig.zls.setup({
+            capabilities = capabilities,
+            cmd = { "zls" },
+            filetypes = { "zig", "zir", "zon" },
+            root_dir = lspconfig.util.root_pattern("build.zig", ".git"),
+            single_file_support = true,
+            settings = {
+                zls = {
+                    semantic_tokens = "partial",
+                    zig_exe_path = vim.fn.exepath("zig"), -- Automatically find zig in PATH
+                }
+            }
+        })
+
+        -- Format on save
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            pattern = { "*.zig", "*.zon", "*.zir" },
+            callback = function()
+                vim.lsp.buf.format()
+            end
+        })
+
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
